@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Articles", type: :request do
   before do
-    stub_request(:get, "https://gnews.io/api/v4/top-headlines?lang=en&token")
+    stub_request(:get, "https://gnews.io/api/v4/top-headlines?lang=en&apikey")
     .with(
       headers: {
         'Accept'=>'*/*',
