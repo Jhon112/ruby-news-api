@@ -2,36 +2,36 @@
 - This is a simple API built with Ruby on Rails that interacts with the GNews API for fetching articles. It also includes a caching mechanism to improve performance and reduce unnecessary API calls.
 
 ## Setup
-1. Clone the repository
+  1. Clone the repository
 
-```bash
-git clone "https://github.com/jhon112/ruby-news-api.git"
-cd my-news-api
-```
+  ```bash
+  git clone "https://github.com/jhon112/ruby-news-api.git"
+  cd ruby-news-api
+  ```
 
 2. Install dependencies
-```
-bundle install
-```
+  ```
+  bundle install
+  ```
 
 3. Environment variables
-Create a .env file in the root directory of the project and add your GNews API key:
+  Create a .env file in the root directory of the project and add your GNews API key:
 
-```
-GNEWS_API_KEY=your_gnews_api_key
-```
+  ```
+  GNEWS_API_KEY=your_gnews_api_key
+  ```
 
-Replace your_gnews_api_key with your actual GNews API key.
+  Replace your_gnews_api_key with your actual GNews API key.
 
-Important: Do not commit the .env file to version control. It is already included in the .gitignore file.
+  Important: Do not commit the .env file to version control. It is already included in the .gitignore file.
 
 4. Enable caching
-In development, caching is disabled by default in Rails. Run the following command to enable it:
+  In development, caching is disabled by default in Rails. Run the following command to enable it:
 
-```
-rails dev:cache
-```
-You should see the message Development mode is now being cached.
+  ```
+  rails dev:cache
+  ```
+  You should see the message Development mode is now being cached.
 
 # Running the server
 Start the Rails server:
