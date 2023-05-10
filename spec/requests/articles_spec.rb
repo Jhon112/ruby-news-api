@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Articles", type: :request do
   before do
-    stub_request(:get, "https://gnews.io/api/v4/top-headlines?lang=en&apikey")
+    stub_request(:get, "https://gnews.io/api/v4/top-headlines?lang=en&apikey=#{ENV["GNEWS_API_KEY"]}")
     .with(
       headers: {
         'Accept'=>'*/*',
@@ -11,8 +11,8 @@ RSpec.describe "Articles", type: :request do
       }
     )
     .to_return(status: 200, body: { 'articles': [
-      { 'title': 'Test title', 'author': 'Test author', 'description': 'Test description' },
-      { 'title': 'Test title 2', 'author': 'Test author 2', 'description': 'Test description 2' }
+      { 'title': 'Test title', 'description': 'Test description' },
+      { 'title': 'Test title 2', 'description': 'Test description 2' }
     ] }.to_json, headers: {})
   end
 
@@ -40,14 +40,6 @@ RSpec.describe "Articles", type: :request do
       json = JSON.parse(response.body)
       json.each do |article|
         expect(article['title']).to include('Test')
-      end
-    end
-
-    it "returns articles with a matching author" do
-      get '/articles/search', params: { author: 'Test' }
-      json = JSON.parse(response.body)
-      json.each do |article|
-        expect(article['author']).to include('Test')
       end
     end
 
